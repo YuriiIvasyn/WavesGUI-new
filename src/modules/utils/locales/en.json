@@ -1,0 +1,67 @@
+{
+  "modal": {
+    "assetInfo": {
+      "title": "Asset info",
+      "unpinned": "Pin",
+      "pinned": "Pinned",
+      "assets": {
+        "8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS": "The official Bitcoin"
+      }
+    },
+    "receive": {
+      "title": "{{assetName}} Wallet Address",
+      "text": "Only send {{assetName}} to this address",
+      "description": "Sending any other digital asset, including {{assetName}}\n Cash, will result in permanent loss.",
+      "ok": "Show Address"
+    },
+    "send": {
+      "title": "Send {{assetName}}",
+      "titleComplete": "Send Complete",
+      "recipient": "Recipient",
+      "sendMax": "Send Max",
+      "withdraw": "Withdraw From",
+      "amount": "Amount",
+      "description": "Description",
+      "descriptionPlaceholder": "Write an optional message",
+      "fee": "Network Fee",
+      "total": "Total",
+      "confirm": {
+        "title": "Transaction Details",
+        "to": "To",
+        "from": "From",
+        "total": "Total",
+        "back": "Go Back",
+        "confirm": "Confirm"
+      },
+      "compare": {
+        "title": "Your transaction is on the way!",
+        "description": "You send {{amount}} {{currency}} (${{mirror}}) to an external address.",
+        "details": "View Details"
+      }
+    },
+    "account": {
+      "title": "Account information",
+      "address": "Your address",
+      "aliases": "Aliases",
+      "create": "Create new",
+      "fee": "Transaction fee {{price}} {{name}}",
+      "notifications": {
+        "aliasCreated": "Alias has been created"
+      }
+    },
+    "termsAccept": {
+      "header": {
+        "title": "Done! Let’s review",
+        "title2": "Terms of Use",
+        "description": "Waves is different — it cannot be safely held with a bank or web service."
+      },
+      "body": {
+        "security": "I understand that my funds are held securely on this device, not by a company",
+        "backup": "I understand that if this app is moved to another device or deleted, my Waves can only be recovered with the backup phrase",
+        "read": "I have read, understood, and agree to the",
+        "terms": "Terms of Use",
+        "ok": "Confirm & Finish"
+      }
+    }
+  }
+}

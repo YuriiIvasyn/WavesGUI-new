@@ -1,0 +1,226 @@
+<!-- See the LICENSE file at https://github.com/wavesplatform/WavesGUI/blob/master/LICENSE. Removal or modification of this copyright notice is prohibited. -->
+
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Waves Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./img/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <style>
+
+        .app-loader {
+            z-index: 10000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-loader .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #0065D7;
+            transition: width 1s;
+            -weblit-transition: width 1s;
+            -moz-transition: width 1s;
+        }
+
+        .loader {
+            background-image: url('/img/waves.svg');
+            background-size: 100% 100%;
+            width: 90px;
+            height: 90px;
+            animation: animate-main-logo 2s infinite linear;
+            -weblit-animation: animate-main-logo 2s infinite linear;
+            -moz-animation: animate-main-logo 2s infinite linear;
+        }
+
+        @keyframes animate-main-logo {
+            from {
+                transform: rotateY(0)
+            }
+            to {
+                transform: rotateY(360deg)
+            }
+        }
+
+        @-moz-keyframes animate-main-logo {
+            from {
+                transform: rotateY(0)
+            }
+            to {
+                transform: rotateY(360deg)
+            }
+        }
+
+        @-webkit-keyframes animate-main-logo {
+            from {
+                transform: rotateY(0)
+            }
+            to {
+                transform: rotateY(360deg)
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            var img = new Image();
+            img.src = '/img/waves.svg';
+        })();
+
+        var __controllers = Object.create(null);
+
+        /**
+         * @type {IWavesApp}
+         */
+        var WavesApp = {
+            name: '{{pack.name}}',
+            version: '{{pack.version}}',
+            type: '{{build.type}}',
+            network: {
+                server: '{{network.server}}',
+                code: '{{network.code}}',
+                matcher: '{{network.matcher}}',
+                coinomat: '{{network.coinomat}}',
+                datafeed: '{{network.datafeed}}'
+            },
+            defaultAssets: {
+                WAVES: 'WAVES',
+                EUR: '{{network.assets.EUR}}',
+                USD: '{{network.assets.USD}}',
+                BTC: '{{network.assets.BTC}}',
+                ETH: '{{network.assets.ETH}}'
+            },
+            modules: [],
+            addController(name, controller) {
+                __controllers[name] = controller;
+            },
+            getController(name) {
+                return __controllers[name];
+            },
+            isWeb() {
+                return this.type === 'web';
+            },
+            isDesktop() {
+                return this.type === 'desktop';
+            },
+            stateTree: null
+        };
+
+    </script>
+
+    <!-- CSS -->
+    <base href="/">
+
+</head>
+
+<body>
+
+<div class="app-loader">
+    <div class="progress"></div>
+    <div class="loader"></div>
+</div>
+
+<ui-view name="main"></ui-view>
+
+<!-- JAVASCRIPT -->
+
+<script>
+    WavesApp.stateTree = new tsUtils.Tree({
+        id: 'root',
+        children: [
+            {
+                id: 'welcome',
+                data: {
+                    url: '/',
+                    noLogin: true,
+                    views: [{ name: 'main' }]
+                }
+            },
+            {
+                id: 'create',
+                data: {
+                    noLogin: true,
+                    views: [{ name: 'main' }]
+                }
+            },
+            {
+                id: 'restore',
+                data: {
+                    noLogin: true,
+                    views: [{ name: 'main' }]
+                }
+            },
+            {
+                id: 'main',
+                data: {
+                    abstract: true,
+                    views: [{ name: 'main', templateUrl: 'modules/app/templates/main.html' }],
+                },
+                children: [
+                    {
+                        id: 'wallet',
+                        data: {
+                            views: [{
+                                name: 'mainContent',
+                                noController: true,
+                                template: '<ui-view name="content"></ui-view>'
+                            }],
+                            redirectTo: 'main.wallet.assets',
+                        },
+                        children: [
+                            { id: 'assets', data: { views: [{ name: 'content' }] } },
+                            { id: 'portfolio', data: { views: [{ name: 'content' }] } },
+                            { id: 'transactions', data: { views: [{ name: 'content' }] } }
+                        ]
+                    },
+                    {
+                        id: 'dex',
+                        data: {
+                            views: [{ name: 'mainContent' }]
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+
+    /**
+     * @typedef {Object} IWavesApp
+     * @property {string} name
+     * @property {string} version
+     * @property {string} type
+     * @property {object} network
+     * @property {string} network.server
+     * @property {string} network.code
+     * @property {string} network.matcher
+     * @property {string} network.coinomat
+     * @property {string} network.datafeed
+     * @property {object} defaultAssets
+     * @property {string} defaultAssets.WAVES
+     * @property {string} defaultAssets.EUR
+     * @property {string} defaultAssets.USD
+     * @property {string} defaultAssets.BTC
+     * @property {string} defaultAssets.ETH
+     * @property {Array<string>} modules
+     * @property {Function} isWeb
+     * @property {Function} isDesktop
+     * @property {Function} addController
+     * @property {Function} getController
+     * @property {Tree} stateTree
+     */
+</script>
+
+</body>
+</html>

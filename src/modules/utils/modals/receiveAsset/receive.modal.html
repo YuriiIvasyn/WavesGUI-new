@@ -1,0 +1,20 @@
+<form ng-cloak>
+    <div class="modal-content">
+        <div ng-if="$ctrl.step === 0" ng-class="{active: $ctrl.step === 0}" class="step step-1">
+            <div class="modal-receive-warning">
+                !
+            </div>
+
+            <p w-i18n="modal.receive.text" params="{assetName: $ctrl.asset.name}"></p>
+            <span w-i18n="modal.receive.description" params="{assetName: $ctrl.asset.name}"></span>
+
+            <w-button class="submit" ng-click="$ctrl.ok()">
+                <w-i18n>modal.receive.ok</w-i18n>
+            </w-button>
+        </div>
+        <div ng-class="{active: $ctrl.step === 1}" class="step step-2">
+            <w-qr-code size="160" url="$ctrl.address"></w-qr-code>
+            <w-copy info="{{::$ctrl.address}}">{{::$ctrl.address}}</w-copy>
+        </div>
+    </div>
+</form>

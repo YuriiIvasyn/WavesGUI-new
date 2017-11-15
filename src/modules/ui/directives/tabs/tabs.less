@@ -1,0 +1,47 @@
+@import (reference) '../../../config';
+@import (reference) '../../../app/less/typography';
+
+w-tabs {
+
+  .titles-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 45px;
+    background-color: @color-white;
+    box-sizing: border-box;
+    padding: 0 15px;
+
+    w-row > div {
+      width: 100%;
+    }
+
+    .title {
+      .body-2();
+      color: @color-info-500;
+      display: block;
+      border: 1px solid transparent;
+      box-sizing: border-box;
+      padding: 15px;
+      line-height: 20px;
+
+      &:not(.active) {
+        cursor: pointer;
+      }
+
+      &.active {
+        color: @color-submit-400;
+        border-bottom-color: @color-submit-400;
+      }
+    }
+  }
+
+  .tab-body-wrap {
+    .tab-tem {
+      box-sizing: border-box;
+      padding: 10px;
+      position: relative;
+    }
+  }
+
+}

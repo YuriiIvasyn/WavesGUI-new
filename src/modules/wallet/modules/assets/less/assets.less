@@ -1,0 +1,109 @@
+@import (reference) '../../../../config';
+
+.main.wallet.assets {
+
+  .content {
+    overflow-x: hidden;
+
+    .btn-icon::before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: 2px;
+      background-size: 100% 100%;
+      width: 14px;
+      height: 14px;
+      margin-right: 7px;
+    }
+
+    .btn-icon.icon-send::before {
+      background-image: url(/img/icons/send-grey.svg);
+    }
+
+    .btn-icon.icon-receive::before {
+      background-image: url(/img/icons/reveice-grey.svg);
+    }
+
+    .btn-icon.icon-add-asset::before {
+      background-image: url(/img/icons/add-asset.svg);
+    }
+
+    .toolbar {
+      margin: 0 0 10px 0;
+      width: calc(~"100% + "@padding-main-layout / 2);
+      position: relative;
+      left: @padding-main-layout * -1 / 4;
+
+      w-button {
+        margin: 0 @padding-main-layout / 4;
+      }
+
+      .right {
+        float: right;
+      }
+    }
+
+    .assets-list {
+      width: calc(~"100% + " @padding-main-layout);
+      position: relative;
+      left: @padding-main-layout * -1 / 2;
+      margin: @padding-main-layout / 2 0;
+    }
+
+    .chart-rate {
+      height: 394px;
+      box-sizing: border-box;
+      border: 0.5px solid #eaeaea;
+      background-color: @color-white;
+      position: relative;
+
+      .toolbar {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0 20px;
+        height: 58px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          margin: auto;
+          left: 20px;
+          right: 20px;
+          bottom: 0;
+          height: 1px;
+          background-color: @color-disabled-100;
+        }
+      }
+
+      .chart-info {
+        height: 95px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        & > div:not(:last-child) {
+          text-align: center;
+          margin-right: 40px;
+        }
+
+        h1 {
+          margin: 0;
+        }
+      }
+
+      .chart-wrapper {
+        height: 239px;
+      }
+    }
+
+    .assets-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "chart": {
+      "intervals": {
+        "hour": "1H",
+        "day": "1D",
+        "week": "1W",
+        "month": "1M",
+        "year": "1Y",
+        "all": "All"
+      }
+  },
+  "send": "Send",
+  "receive": "Receive",
+  "addAsset": "Add Asset",
+  "directives": {
+    "asset": {
+      "balance": "Current balance",
+      "receive": "Receive",
+      "send": "Send"
+    }
+  }
+}
